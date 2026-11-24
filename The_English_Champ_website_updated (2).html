@@ -389,12 +389,23 @@ const BOOK_LINKS={
 };
 /* The BOOK_LINKS object above is the ONLY book-link source.
    Edit the URLs in this HTML file and redeploy to Vercel. */
+/* Each subject card itself opens its PDF. No placeholder/link text is shown on the card. */
 function refreshBookCards(){
  document.querySelectorAll(".book-card").forEach(card=>{
-  const name=card.dataset.book,url=BOOK_LINKS[name]||"",p=card.querySelector(".book-link");
-  card.href=url||"#";
-  if(url){card.target="_blank";card.rel="noopener";p.textContent="Open PDF Book ↗";card.onclick=null}
-  else{card.removeAttribute("target");card.removeAttribute("rel");p.textContent="["+name+" Book Link]";card.onclick=e=>e.preventDefault()}
+  const name=card.dataset.book,url=(BOOK_LINKS[name]||"").trim();
+  if(url){
+   card.href=url;
+   card.target="_blank";
+   card.rel="noopener noreferrer";
+   card.onclick=null;
+   card.setAttribute("aria-label","Open "+name+" PDF book");
+  }else{
+   card.removeAttribute("href");
+   card.removeAttribute("target");
+   card.removeAttribute("rel");
+   card.onclick=e=>e.preventDefault();
+   card.setAttribute("aria-label",name+" book link will be added");
+  }
  });
 }
 refreshBookCards();
@@ -416,7 +427,7 @@ if(home){
    const card=document.createElement("a");card.className="card book-card";card.dataset.book=name;card.href=BOOK_LINKS[name]||"#";
    if(BOOK_LINKS[name]){card.target="_blank";card.rel="noopener"}
    card.style.textDecoration="none";card.style.color="inherit";
-   card.innerHTML=`<span class="hex">${String(i+1).padStart(2,"0")}</span><div><h3>${name}</h3><p class="book-link">[${name} Book Link]</p></div>`;
+   card.innerHTML=`<span class="hex">${String(i+1).padStart(2,"0")}</span><div><h3>${name}</h3></div>`;
    fields.append(card);
   });
  }
