@@ -109,19 +109,19 @@ body[data-r="home"] #sub{display:flex}
 <div data-s="login" id="ex">
 <div class="stage login card"><h3 style="font-size:26px;margin-bottom:16px">Candidate login</h3>
 <div class="f"><label for="cname">Full name</label><input autocomplete="off" id="cname" placeholder="Shahjalal (testing account)"/></div>
-<div class="f"><label for="cid">Registration ID</label><input autocomplete="off" id="cid" placeholder="EPL-0001"/></div><div class="f"><label for="cpin">Exam PIN</label><input autocomplete="off" id="cpin" inputmode="numeric" type="password" placeholder="Enter your Exam PIN"/></div>
+<div class="f"><label for="cid">Registration ID</label><input autocomplete="off" id="cid" placeholder="TEC-0001"/></div><div class="f"><label for="cpin">Exam PIN</label><input autocomplete="off" id="cpin" inputmode="numeric" type="password" placeholder="Enter your Exam PIN"/></div>
 <button class="btn" id="lg" type="button">Log in</button><p class="err" id="le" role="alert"></p>
 <div class="demo"><b>10 Testing Accounts (Demo Only)</b><br>
-Shahjalal — EPL-0001 / PIN 1234<br>
-Demo Student Two — EPL-0002 / PIN 5678<br>
-Demo Kid — EPL-0003 / PIN 1111<br>
-Demo Young Achiever — EPL-0004 / PIN 2222<br>
-Ayesha Rahman — EPL-0005 / PIN 3333<br>
-Tanvir Hasan — EPL-0006 / PIN 4444<br>
-Nusrat Jahan — EPL-0007 / PIN 5555<br>
-Rafi Ahmed — EPL-0008 / PIN 6666<br>
-Samiha Islam — EPL-0009 / PIN 7777<br>
-Arman Hossain — EPL-0010 / PIN 8888<br>
+Shahjalal — TEC-0001 / PIN 1234<br>
+Demo Student Two — TEC-0002 / PIN 5678<br>
+Demo Kid — TEC-0003 / PIN 1111<br>
+Demo Young Achiever — TEC-0004 / PIN 2222<br>
+Ayesha Rahman — TEC-0005 / PIN 3333<br>
+Tanvir Hasan — TEC-0006 / PIN 4444<br>
+Nusrat Jahan — TEC-0007 / PIN 5555<br>
+Rafi Ahmed — TEC-0008 / PIN 6666<br>
+Samiha Islam — TEC-0009 / PIN 7777<br>
+Arman Hossain — TEC-0010 / PIN 8888<br>
 Use assigned Registration ID and Exam PIN for real candidates. The exam contains 50 MCQs followed by one written response.</div></div>
 <div class="stage intro card"><span class="chip p" id="ig"></span><h3 id="in" style="font-size:30px;margin:10px 0 2px"></h3><p class="sub" id="ii"></p>
 <div class="facts"><div><b id="iq"></b>Questions</div><div><b id="id"></b>Minutes</div><div><b>1</b>Mark each</div></div>
@@ -143,7 +143,7 @@ Use assigned Registration ID and Exam PIN for real candidates. The exam contains
 </div></div>
 <script>;(()=>{
 
-const F=[["Vocabulary","[Vocabulary Book Link]"],["Grammar","[Grammar Book Link]"],["Spelling","[Spelling Book Link]"],["IPA","[IPA Book Link]"],["Synonyms & Antonyms","[Synonyms & Antonyms Book Link]"],["Listening","[Listening Book Link]"],["Speaking","[Speaking Book Link]"],["Writing","[Writing Book Link]"]];
+const F=[["Vocabulary","[https://docs.google.com/document/d/1cAh3SF2TQj9q3fNbJdiG7X3EL0fT9y4hpkub01iKQhg/edit?usp=sharing]"],["Grammar","[Grammar Book Link]"],["Spelling","[Spelling Book Link]"],["IPA","[IPA Book Link]"],["Synonyms & Antonyms","[Synonyms & Antonyms Book Link]"],["Listening","[Listening Book Link]"],["Speaking","[Speaking Book Link]"],["Writing","[Writing Book Link]"]];
 const O=[["Round 1","50 MCQ · Online"],["Round 2","To be announced"],["Round 3","To be announced"],["Round 4","Live Grand Finale · Channel i"]];
 const mk=(h,c)=>{const d=document.createElement("div");d.className=c;d.innerHTML=h;return d};
 F.forEach((x,i)=>f.append(mk(`<div class="hex">${i+1}</div><div><h3>${x[0]}</h3><p>${x[1]}</p></div>`,"card rv")));
@@ -258,16 +258,16 @@ const store=(()=>{
    2 = Rising Stars  | 3 = Future Leaders
    For the client demo, use the names, IDs and PINs shown below. */
  const cand={
-  "EPL-0001":{pin:"1234",name:"Shahjalal",group:GROUPS[2]},
-  "EPL-0002":{pin:"5678",name:"Demo Student Two",group:GROUPS[3]},
-  "EPL-0003":{pin:"1111",name:"Demo Kid",group:GROUPS[0]},
-  "EPL-0004":{pin:"2222",name:"Demo Young Achiever",group:GROUPS[1]},
-  "EPL-0005":{pin:"3333",name:"Ayesha Rahman",group:GROUPS[0]},
-  "EPL-0006":{pin:"4444",name:"Tanvir Hasan",group:GROUPS[0]},
-  "EPL-0007":{pin:"5555",name:"Nusrat Jahan",group:GROUPS[1]},
-  "EPL-0008":{pin:"6666",name:"Rafi Ahmed",group:GROUPS[1]},
-  "EPL-0009":{pin:"7777",name:"Samiha Islam",group:GROUPS[2]},
-  "EPL-0010":{pin:"8888",name:"Arman Hossain",group:GROUPS[3]}
+  "TEC-0001":{pin:"1234",name:"Shahjalal",group:GROUPS[2]},
+  "TEC-0002":{pin:"5678",name:"Demo Student Two",group:GROUPS[3]},
+  "TEC-0003":{pin:"1111",name:"Demo Kid",group:GROUPS[0]},
+  "TEC-0004":{pin:"2222",name:"Demo Young Achiever",group:GROUPS[1]},
+  "TEC-0005":{pin:"3333",name:"Ayesha Rahman",group:GROUPS[0]},
+  "TEC-0006":{pin:"4444",name:"Tanvir Hasan",group:GROUPS[0]},
+  "TEC-0007":{pin:"5555",name:"Nusrat Jahan",group:GROUPS[1]},
+  "TEC-0008":{pin:"6666",name:"Rafi Ahmed",group:GROUPS[1]},
+  "TEC-0009":{pin:"7777",name:"Samiha Islam",group:GROUPS[2]},
+  "TEC-0010":{pin:"8888",name:"Arman Hossain",group:GROUPS[3]}
  };
  const Q=[["Choose the synonym of “rapid”.","Quick|Slow|Late|Weak",0],["Choose the antonym of “ancient”.","Modern|Old|Historic|Aged",0],["Choose the correct spelling.","Accommodation|Acommodation|Accomodation|Acomodation",0],["She ___ to school every day.","goes|go|going|gone",0],["Which word has a silent “k”?","Knife|Kite|Kind|Key",0],["“Break a leg” means:","Good luck|Get hurt|Run fast|Stop",0],["Which word sounds like “right”?","Write|Wrote|Writ|Rough",0],["The phrasal verb “give up” means:","Quit|Donate|Raise|Begin",0],["Choose the correct sentence.","He don’t like tea.|He doesn’t like tea.|He not like tea.|He no likes tea.",1],["One word for “a person who writes books”:","Author|Editor|Reader|Printer",0]];
  const R={};R[GROUPS[2]+"|1st Round"]={cut:5,rows:[["EPL-0101","Nafisa Rahman","Demo School A",9],["EPL-0102","Tahmid Hasan","Demo School B",9],["EPL-0103","Mahin Chowdhury","Demo School C",8],["EPL-0104","Sadia Akter","Demo School A",8],["EPL-0105","Rafi Ahmed","Demo School D",7],["EPL-0106","Ishrat Jahan","Demo School B",7],["EPL-0107","Arman Hossain","Demo School E",6],["EPL-0108","Tanisha Islam","Demo School C",5],["EPL-0001","Demo Candidate","Demo School",8]]};
