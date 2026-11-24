@@ -138,12 +138,12 @@ Use assigned Registration ID and Exam PIN for real candidates. The exam contains
 </div></div>
 </div></div>
 <div class="pv pp" id="pg-results"><div class="wrap"><div class="view on" id="v-results"><p class="eyebrow">Results</p><h2>Check your result</h2><p class="sub">Choose your group and round, then search by Registration ID or name.</p>
-<div class="ctl"><div><label for="rg">Group</label><select id="rg"></select></div><div><label for="rr">Round</label><select id="rr"><option>Round 1</option><option>Round 2</option><option>Round 3</option><option>Round 4</option></select></div><div><label for="rs">Search ID or name</label><input id="rs" placeholder="e.g. EPL-0102 or Nafisa"/></div></div>
+<div class="ctl"><div><label for="rg">Group</label><select id="rg"></select></div><div><label for="rr">Round</label><select id="rr"><option>Round 1</option><option>Round 2</option><option>Round 3</option><option>Round 4</option></select></div><div><label for="rs">Search ID or name</label><input id="rs" placeholder="e.g. TEC-0102 or Nafisa"/></div></div>
 <div id="rout"></div><p class="demo">Demo data: names and scores shown here are samples, not real results.</p></div>
 </div></div>
 <script>;(()=>{
 
-const F=[["Vocabulary","[https://docs.google.com/document/d/1cAh3SF2TQj9q3fNbJdiG7X3EL0fT9y4hpkub01iKQhg/edit?usp=sharing]"],["Grammar","[Grammar Book Link]"],["Spelling","[Spelling Book Link]"],["IPA","[IPA Book Link]"],["Synonyms & Antonyms","[Synonyms & Antonyms Book Link]"],["Listening","[Listening Book Link]"],["Speaking","[Speaking Book Link]"],["Writing","[Writing Book Link]"]];
+const F=[["Vocabulary",""],["Grammar",""],["Reading",""],["Writing",""],["Speaking / Speech / Presentation",""],["IPA",""],["Literature",""],["Listening",""]];
 const O=[["Round 1","50 MCQ · Online"],["Round 2","To be announced"],["Round 3","To be announced"],["Round 4","Live Grand Finale · Channel i"]];
 const mk=(h,c)=>{const d=document.createElement("div");d.className=c;d.innerHTML=h;return d};
 F.forEach((x,i)=>f.append(mk(`<div class="hex">${i+1}</div><div><h3>${x[0]}</h3><p>${x[1]}</p></div>`,"card rv")));
@@ -159,7 +159,7 @@ const $=id=>document.getElementById(id);
 let text="";
 const ORG={whatsapp:"",email:""}; // organizer WhatsApp number (e.g. 8801XXXXXXXXX) and email
 
-const rid=()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return "EPL-"+a[0].toString(36).toUpperCase().padStart(6,"0").slice(-6)};
+const rid=()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return "TEC-"+a[0].toString(36).toUpperCase().padStart(6,"0").slice(-6)};
 $("form").addEventListener("submit",async e=>{
  e.preventDefault();$("err").textContent="";
  const f=e.target;if(!f.checkValidity()){f.reportValidity();return}
@@ -177,7 +177,7 @@ $("form").addEventListener("submit",async e=>{
  $("card").classList.add("show");$("card").scrollIntoView({behavior:"smooth"});
 });
 $("cp").onclick=async()=>{try{await navigator.clipboard.writeText(text);$("cp").textContent="Copied ✓"}catch(x){$("cp").textContent="Copy not available"}};
-$("dl").onclick=async()=>{try{const d=window.claude&&await claude.use("downloads");if(!d)throw 0;await d.save({filename:"EPL-registration-pending.txt",data:text})}catch(x){$("dl").textContent="Download not available"}};
+$("dl").onclick=async()=>{try{const d=window.claude&&await claude.use("downloads");if(!d)throw 0;await d.save({filename:"TEC-registration-pending.txt",data:text})}catch(x){$("dl").textContent="Download not available"}};
 $("paid").onclick=()=>{$("step2").hidden=false;$("step2").scrollIntoView({behavior:"smooth"})};
 document.querySelectorAll(".cpy").forEach(b=>b.onclick=async()=>{const o=b.textContent;try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="Copied ✓";setTimeout(()=>b.textContent=o,1600)}catch(x){b.textContent="Copy not available"}});
 $("again").onclick=()=>{$("step2").hidden=true;$("form").reset();$("go").disabled=false;$("go").textContent="Submit registration";$("card").classList.remove("show");$("cp").textContent="Copy details";$("dl").textContent="Download slip";scrollTo({top:0,behavior:"smooth"})};
@@ -270,8 +270,8 @@ const store=(()=>{
   "TEC-0010":{pin:"8888",name:"Arman Hossain",group:GROUPS[3]}
  };
  const Q=[["Choose the synonym of “rapid”.","Quick|Slow|Late|Weak",0],["Choose the antonym of “ancient”.","Modern|Old|Historic|Aged",0],["Choose the correct spelling.","Accommodation|Acommodation|Accomodation|Acomodation",0],["She ___ to school every day.","goes|go|going|gone",0],["Which word has a silent “k”?","Knife|Kite|Kind|Key",0],["“Break a leg” means:","Good luck|Get hurt|Run fast|Stop",0],["Which word sounds like “right”?","Write|Wrote|Writ|Rough",0],["The phrasal verb “give up” means:","Quit|Donate|Raise|Begin",0],["Choose the correct sentence.","He don’t like tea.|He doesn’t like tea.|He not like tea.|He no likes tea.",1],["One word for “a person who writes books”:","Author|Editor|Reader|Printer",0]];
- const R={};R[GROUPS[2]+"|1st Round"]={cut:5,rows:[["EPL-0101","Nafisa Rahman","Demo School A",9],["EPL-0102","Tahmid Hasan","Demo School B",9],["EPL-0103","Mahin Chowdhury","Demo School C",8],["EPL-0104","Sadia Akter","Demo School A",8],["EPL-0105","Rafi Ahmed","Demo School D",7],["EPL-0106","Ishrat Jahan","Demo School B",7],["EPL-0107","Arman Hossain","Demo School E",6],["EPL-0108","Tanisha Islam","Demo School C",5],["EPL-0001","Demo Candidate","Demo School",8]]};
- R[GROUPS[3]+"|1st Round"]={cut:3,rows:[["EPL-0201","Zarin Tasnim","Demo College A",10],["EPL-0202","Farhan Kabir","Demo College B",9],["EPL-0203","Maisha Khan","Demo College A",8],["EPL-0204","Rayan Sarker","Demo College C",7],["EPL-0205","Labiba Noor","Demo College D",6],["EPL-0002","Demo Student Two","Demo College",9]]};
+ const R={};R[GROUPS[2]+"|1st Round"]={cut:5,rows:[["TEC-0101","Nafisa Rahman","Demo School A",9],["TEC-0102","Tahmid Hasan","Demo School B",9],["TEC-0103","Mahin Chowdhury","Demo School C",8],["TEC-0104","Sadia Akter","Demo School A",8],["TEC-0105","Rafi Ahmed","Demo School D",7],["TEC-0106","Ishrat Jahan","Demo School B",7],["TEC-0107","Arman Hossain","Demo School E",6],["TEC-0108","Tanisha Islam","Demo School C",5],["TEC-0001","Demo Candidate","Demo School",8]]};
+ R[GROUPS[3]+"|1st Round"]={cut:3,rows:[["TEC-0201","Zarin Tasnim","Demo College A",10],["TEC-0202","Farhan Kabir","Demo College B",9],["TEC-0203","Maisha Khan","Demo College A",8],["TEC-0204","Rayan Sarker","Demo College C",7],["TEC-0205","Labiba Noor","Demo College D",6],["TEC-0002","Demo Student Two","Demo College",9]]};
  const wait=()=>new Promise(r=>setTimeout(r,250));
  return{
   async login(name,id,pin){await wait();const k=id.trim().toUpperCase(),c=cand[k],n=s=>s.trim().replace(/\s+/g," ").toLowerCase();return c&&c.pin===pin&&n(c.name)===n(name)?{id:k,name:c.name,group:c.group}:null},
@@ -379,13 +379,18 @@ const WRITING_TOPICS=[
    1) Upload each PDF to Google Drive.
    2) Set sharing access so anyone with the link can view.
    3) Paste the Google Drive URL between the quotation marks.
-   4) Leave a value as "" until that book is ready.
+   4) IPA and Listening are blank for now; add their URLs when available.
    5) Save this HTML file and upload it to Vercel again.
    ===================================================================== */
 const BOOK_LINKS={
- "Vocabulary":"","Grammar":"","Spelling":"",
- "IPA":"","Synonyms & Antonyms":"",
- "Listening":"","Speaking":"","Writing":""
+ "Vocabulary":"https://docs.google.com/document/d/1cAh3SF2TQj9q3fNbJdiG7X3EL0fT9y4hpkub01iKQhg/edit?usp=sharing",
+ "Grammar":"https://docs.google.com/document/d/1sveE67SgEnapUs1WqajXzWzIE5JgiwB5tZStsZjcuQA/edit?usp=sharing",
+ "Reading":"https://drive.google.com/drive/folders/1awnV7t7cCQPA5yQkv1rKx61MbPyIwDbR?usp=sharing",
+ "Writing":"https://docs.google.com/document/d/1Ghm2LBUspyZpxSNM3F3cG7Xd9q04Wv5UvwvIX-Xxpr8/edit?usp=sharing",
+ "Speaking / Speech / Presentation":"https://docs.google.com/document/d/1Ghm2LBUspyZpxSNM3F3cG7Xd9q04Wv5UvwvIX-Xxpr8/edit?usp=sharing",
+ "IPA":"",
+ "Literature":"https://docs.google.com/document/d/1oN5izbiLeOeam0f_hyu6YcSOS3JczuVPSPsy8_E-6oE/edit?usp=sharing",
+ "Listening":""
 };
 /* The BOOK_LINKS object above is the ONLY book-link source.
    Edit the URLs in this HTML file and redeploy to Vercel. */
